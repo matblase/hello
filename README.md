@@ -1,4 +1,6 @@
-# WDD 231 personal project
+# WDD 231 personal project 
+
+this is my netlify production link: https://imaginative-kitsune-186da6.netlify.app/
 
 ## Description
 
