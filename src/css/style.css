@@ -212,3 +212,108 @@ img {
   height: auto;
   display: block;
 }
+
+/* =========================
+   INTRO SECTION
+========================= */
+
+.intro {
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.intro h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.intro p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* =========================
+   INFO SECTION
+========================= */
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+
+/* =========================
+   MEDIA CARDS
+========================= */
+
+.media-card {
+  border: 1px solid var(--bs-grey-3);
+  background-color: var(--bs-white);
+}
+
+.media-card__img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.media-card__title {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  padding: 0 1rem;
+}
+
+.media-card p {
+  padding: 0 1rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+#park-footer {
+  background-image: url("./topo_pattern.png");
+  background-size: cover;
+  color: rgb(249, 248, 248);
+  padding: 2rem 1rem;
+}
+
+.contact {
+  max-width: 900px;
+  margin: 0 auto;
+  color: black;
+}
+
+.contact h3 {
+  margin-bottom: 1rem;
+}
+
+.contact h4 {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.contact p {
+  margin: 0.2rem 0;
+}
+
+/* =========================
+   RESPONSIVE (LARGER SCREENS)
+========================= */
+
+@media (min-width: 768px) {
+  .info {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero-banner__title {
+    font-size: 2.5rem;
+  }
+
+  .intro h1 {
+    font-size: 2.5rem;
+  }
+}
