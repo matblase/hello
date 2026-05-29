@@ -1,8 +1,6 @@
-import { getParkData } from "./parkService.mjs";
+import { getParkData, getInfoLinks } from "./parkService.mjs";
 
-const parkData = getParkData();
-
-
+// Template for park header block
 function parkInfoTemplate(info) {
   return `<a href="${info.url}" class="hero-banner__title">${info.fullName}</a>
   <p class="hero-banner__subtitle">
@@ -11,7 +9,8 @@ function parkInfoTemplate(info) {
   </p>`;
 }
 
-function setHeaderInfo(data) {
+
+function setHeaderFooter(data) {
   const disclaimer = document.querySelector(".disclaimer > a");
   disclaimer.href = data.url;
   disclaimer.innerHTML = data.fullName;
@@ -24,8 +23,10 @@ function setHeaderInfo(data) {
 
   document.querySelector(".hero-banner__content").innerHTML =
     parkInfoTemplate(data);
-}
 
+  const footerEl = document.querySelector("#park-footer");
+  footerEl.innerHTML = footerTemplate(data);
+}
 
 function setParkIntro(data) {
   const introEl = document.querySelector(".intro");
@@ -45,34 +46,11 @@ function mediaCardTemplate(info) {
   </div>`;
 }
 
-const parkInfoLinks = [
-  {
-    name: "Current Conditions ›",
-    link: "conditions.html",
-    image: parkData.images[2].url,
-    description:
-      "See what conditions to expect in the park before leaving on your trip!"
-  },
-  {
-    name: "Fees and Passes ›",
-    link: "fees.html",
-    image: parkData.images[3].url,
-    description: "Learn about the fees and passes that are available."
-  },
-  {
-    name: "Visitor Centers ›",
-    link: "visitor_centers.html",
-    image: parkData.images[9].url,
-    description: "Learn about the visitor centers in the park."
-  }
-];
-
 function setParkInfoLinks(data) {
   const infoEl = document.querySelector(".info");
   const html = data.map(mediaCardTemplate);
   infoEl.innerHTML = html.join("");
 }
-
 
 function getMailingAddress(addresses) {
   return addresses.find((address) => address.type === "Mailing");
@@ -101,13 +79,14 @@ function footerTemplate(info) {
   </section>`;
 }
 
-function setFooter(data) {
-  const footerEl = document.querySelector("#park-footer");
-  footerEl.innerHTML = footerTemplate(data);
+
+async function init() {
+  const parkData = await getParkData();
+  const links = getInfoLinks(parkData.images);
+
+  setHeaderFooter(parkData);
+  setParkIntro(parkData);
+  setParkInfoLinks(links);
 }
 
-
-setHeaderInfo(parkData);
-setParkIntro(parkData);
-setParkInfoLinks(parkInfoLinks);
-setFooter(parkData);
+init();
