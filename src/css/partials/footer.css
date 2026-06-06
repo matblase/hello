@@ -1,25 +1,29 @@
+/* Park Footer Styles */
 #park-footer {
-  background-image: url("./topo_pattern.png");
-  background-size: cover;
-  color: rgb(249, 248, 248);
-  padding: 2rem 1rem;
+  
+  background-image: url("../topo_pattern.png");
+  background-repeat: repeat;
+  background-color: #222;
+  color: #000; 
+  padding: 2rem;
+  min-height: 150px;
+  margin-top: 3rem;
 }
 
-.contact {
-  max-width: 900px;
-  margin: 0 auto;
-  color: black;
+#park-footer h3, 
+#park-footer h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #000; 
+  font-weight: bold;
 }
 
-.contact h3 {
+#park-footer p {
+  color: #111; 
+  margin: 0.3rem 0;
+  font-weight: 500; 
+}
+
+#park-footer div {
   margin-bottom: 1rem;
-}
-
-.contact h4 {
-  margin-top: 1rem;
-  font-size: 1rem;
-}
-
-.contact p {
-  margin: 0.2rem 0;
 }

@@ -14,10 +14,3 @@
   --alert-danger: #720f04;
   --bs-grey-3: #ccc;
 }
-#park-footer {
-  background-image: url("./topo_pattern.png");
-  background-repeat: repeat;
-  
-  padding: 2rem;
-  min-height: 150px; 
-}
