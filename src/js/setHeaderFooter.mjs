@@ -1,3 +1,7 @@
+import { getParkData, getInfoLinks } from "./parkService.mjs";
+// IMPORT: Pulls in the focused modular navigation handler (Step 06)
+import enableNavigation from "./navigation.mjs"; 
+
 function parkInfoTemplate(info) {
   return `<a href="conditions.html" class="hero-banner__title">${info.fullName}</a>
   <p class="hero-banner__subtitle">
@@ -35,30 +39,6 @@ function footerTemplate(info) {
   </section>`;
 }
 
-function enableNavigation() {
-  const menuButton = document.querySelector("#global-nav-toggle");
-  const globalNav = document.querySelector(".global-nav");
-
-  if (!menuButton || !globalNav) return;
-
-  menuButton.addEventListener("click", (ev) => {
-    let target = ev.target;
-    
-    // Toggle the menu visible state
-    globalNav.classList.toggle("show");
-
-    // Account for clicks that landed on nested text or icons inside button
-    if (target.tagName !== "BUTTON") {
-      target = target.closest("button");
-    }
-
-    if (target) {
-      const isOpen = globalNav.classList.contains("show");
-      target.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    }
-  });
-}
-
 export default function setHeaderFooter(data) {
   if (!data) return;
 
@@ -82,7 +62,5 @@ export default function setHeaderFooter(data) {
 
   const footerEl = document.querySelector("#park-footer");
   if (footerEl) footerEl.innerHTML = footerTemplate(data);
-
-  // Initialize navigation listeners dynamically on page finish
-  enableNavigation();
+enableNavigation();
 }
